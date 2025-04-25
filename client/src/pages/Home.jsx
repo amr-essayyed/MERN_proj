@@ -2,7 +2,6 @@ import React from 'react'
 import { useAuth } from '../hooks/useAuth'
 import { Navigate, NavLink, useNavigate } from 'react-router';
 import usePosts from '../hooks/usePosts';
-import fallbackImage from 'C:/dev/react_proj/server/client/src/assets/img.webp';
 
 export default function Home() {
   const {authenticate} = useAuth();
