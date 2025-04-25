@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
+
+  color-scheme: light dark;
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* color: #D6DADE; */
+  color: var(--color-blue-950);
+  /* background-color: #242424; */
+  /* background-color: #252728; */
+  background-color: #ffffff;
+
+  background-image: url('images/pattern.jpg');
+  background-attachment: fixed;
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* background-position: -15% 90%; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
