@@ -1,4 +1,4 @@
-import background from 'public/assets/images/pattern.jpg';
+import background from '../../public/assets/images/pattern.jpg';
 import './App.css'
 import NavBar from './components/NavBar';
 import { Routes, Route } from 'react-router';
