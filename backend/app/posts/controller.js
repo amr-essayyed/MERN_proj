@@ -15,7 +15,7 @@ export async function addPost(req, res){
         // form.append('image', req.file.buffer, { filename: req.file.originalname });
         
         try {
-            const response = await axios.post('https://api.imgur.com/3/image', form, {
+            const response = await axios.post(process.env.IMG_SERVER_URL, form, {
                 headers: {
                     Authorization: 'Client-ID ' + process.env.IMGUR_CLIENT_ID,
                     ...form.getHeaders(),

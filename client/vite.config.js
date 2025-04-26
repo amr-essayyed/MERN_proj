@@ -11,25 +11,25 @@ export default defineConfig({
   server: {
     proxy: {
       '/auth': {
-        target: 'http://localhost:8080',
+        target: 'http://mernproj-production.up.railway.app',
         changeOrigin: true,
         secure:false
       },
       '/posts': {
-        target: 'http://localhost:8080',
+        target: 'http://mernproj-production.up.railway.app',
         changeOrigin: true,
         secure: false
       },
       '/users': {
-        target: 'http://localhost:8080',
+        target: 'http://mernproj-production.up.railway.app',
         changeOrigin: true,
         secure: false
       },
-      '/assets': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false
-      }
+      // '/assets': {
+      //   target: 'http://localhost:8080',
+      //   changeOrigin: true,
+      //   secure: false
+      // }
     }
   }
 })
