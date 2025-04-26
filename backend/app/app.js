@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // attach all the subprograms to each associated endpoints
-app.use('/assets',express.static(path.join(__projdir, '/server/public/assets')));
+// app.use('/assets',express.static(path.join(__projdir, '/server/public/assets')));
 
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 console.log(path.join(__dirname, '../../client/dist'));

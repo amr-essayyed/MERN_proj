@@ -29,15 +29,15 @@ export async function addPost(req, res){
         }
         catch(e) {
             console.error("🔴",e);
-            return res.status(500).send({ error: "Failed to upload image" });
+            return res.status(501).send({ error: "Failed to upload image" });
         }
     }
 
     const added = await add(req.username, req.body);
     if(added){
-        res.status(201).send({msg:"post added successfully"});
+        return res.status(201).send({msg:"post added successfully"});
     }else{
-        res.status(400).send("something went wrong");
+        return res.status(400).send("something went wrong while storing the post");
     }
 }
 
@@ -49,10 +49,10 @@ export async function getPosts(req, res){
         const loginData = isLoggedIn(req);
         if(loginData !== null){
             // res.render('../views/posts.ejs', {name:loginData.name, posts: posts});
-            res.send(posts);
+            return res.send(posts);
         }else{
             // res.render('../views/posts.ejs', {name: null, posts: posts});
-            res.send(posts);
+            return res.send(posts);
         }
     }else{
         res.status(404).send({error:"there is no posts"});
