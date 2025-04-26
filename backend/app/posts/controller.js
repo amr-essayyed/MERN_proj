@@ -22,7 +22,6 @@ export async function addPost(req, res){
                 },
             });
             
-
             req.body.image = response.data.data.link;
             console.log("🟢 img url: ", req.body.image);
             
@@ -62,10 +61,31 @@ export async function getPosts(req, res){
 
 export async function updatePost(req, res){
     const id = req.params.id;
-    // console.log("updating a post: ", req.body, req.file);
 
     if (req.file != undefined) {
-        req.body.image = 'assets/images/' + req.file.filename;
+        // req.body.image = 'assets/images/'+ req.file.filename;
+
+        const form = new FormData();
+        form.append('image', req.file.buffer.toString('base64'));
+        // form.append('image', fs.createReadStream(req.file.path));
+        // form.append('image', req.file.buffer, { filename: req.file.originalname });
+
+        try {
+            const response = await axios.post(process.env.IMG_SERVER_URL, form, {
+                headers: {
+                    Authorization: 'Client-ID ' + process.env.IMGUR_CLIENT_ID,
+                    ...form.getHeaders(),
+                },
+            });
+
+            req.body.image = response.data.data.link;
+            console.log("🟢 img url: ", req.body.image);
+
+        }
+        catch (e) {
+            console.error("🔴", e);
+            return res.status(501).send({ error: "Failed to upload image" });
+        }
     }
     
     const updated = await update(id, req.body);
