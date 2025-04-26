@@ -13,7 +13,7 @@ function App() {
   // const [isLoggedin, setIsLoggedin] = useState(false);
 
   return (
-    <div style={{  backgroundImage: url(background)}}>
+    <div style={{  backgroundImage: `url(${background})`}}>
     <AuthProvider>
       <NavBar></NavBar>
       <Routes>
