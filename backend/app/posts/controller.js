@@ -1,13 +1,38 @@
 import { add, getAll, update, deleteModel } from "./model.js";
 import { isLoggedIn } from "../utility/auth.js";
+import FormData from 'form-data';
+import axios from 'axios';
+import fs from 'fs';
 
 export async function addPost(req, res){
     // console.log("adding a post: ", req.body, req.file);
 
     if(req.file != undefined){
-        req.body.image = 'assets/images/'+ req.file.filename;
+        // req.body.image = 'assets/images/'+ req.file.filename;
+        
+        const form = new FormData();
+        form.append('image', fs.createReadStream(req.file.path));
+        // form.append('image', req.file.buffer, { filename: req.file.originalname });
+        
+        try {
+            const response = await axios.post('https://api.imgur.com/3/image', form, {
+                headers: {
+                    Authorization: 'Client-ID ' + process.env.IMGUR_CLIENT_ID,
+                    ...form.getHeaders(),
+                },
+            });
+            
+
+            req.body.image = response.data.data.link;
+            console.log("🟢 img url: ", req.body.image);
+            
+        }
+        catch(e) {
+            console.error("🔴",e);
+            return res.status(500).send({ error: "Failed to upload image" });
+        }
     }
-    
+
     const added = await add(req.username, req.body);
     if(added){
         res.status(201).send({msg:"post added successfully"});
