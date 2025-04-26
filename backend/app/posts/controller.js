@@ -2,7 +2,6 @@ import { add, getAll, update, deleteModel } from "./model.js";
 import { isLoggedIn } from "../utility/auth.js";
 import FormData from 'form-data';
 import axios from 'axios';
-import fs from 'fs';
 
 export async function addPost(req, res){
     // console.log("adding a post: ", req.body, req.file);
@@ -11,7 +10,8 @@ export async function addPost(req, res){
         // req.body.image = 'assets/images/'+ req.file.filename;
         
         const form = new FormData();
-        form.append('image', fs.createReadStream(req.file.path));
+        form.append('image', req.file.buffer.toString('base64'));
+        // form.append('image', fs.createReadStream(req.file.path));
         // form.append('image', req.file.buffer, { filename: req.file.originalname });
         
         try {

@@ -7,17 +7,25 @@ import path from 'path';
 
 import { __projdir } from '../app.js';
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.join(__projdir, '/server/public/assets/images'))
-    },
-    filename: function (req, file, cb) {
-        const uniquePrefix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, "img-"+uniquePrefix+'-' + file.originalname)
-    }
-})
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, path.join(__projdir, '/server/public/assets/images'))
+//     },
+//     filename: function (req, file, cb) {
+//         const uniquePrefix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+//         cb(null, "img-"+uniquePrefix+'-' + file.originalname)
+//     }
+// })
 
-const upload = multer({ storage:storage});
+
+
+// const upload = multer({ storage:storage});
+const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: {
+        fileSize: 5 * 1024 * 1024 // 5MB limit
+    }
+});
 
 
 router.post('/', authorizeMW, upload.single('image'), addPost);
