@@ -1,4 +1,3 @@
-import background from '../../public/assets/images/pattern.jpg';
 import './App.css'
 import NavBar from './components/NavBar';
 import { Routes, Route } from 'react-router';
@@ -13,7 +12,6 @@ function App() {
   // const [isLoggedin, setIsLoggedin] = useState(false);
 
   return (
-    <div style={{  backgroundImage: `url(${background})`, backgroundAttachment:"fixed"}}>
     <AuthProvider>
       <NavBar></NavBar>
       <Routes>
@@ -24,7 +22,6 @@ function App() {
         <Route path="/editpost/:id" element={<EditPost />} />
       </Routes>
     </AuthProvider>
-    </div>
   )
 }
 
