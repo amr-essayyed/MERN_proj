@@ -17,7 +17,7 @@ export default function Home() {
     <main className="mt-20">
       {posts.map((post)=> 
       // post 
-        <div key={post._id} className="w-[56rem] border-blue-900 mt-5 mb-5 border-3 rounded-xl  ml-auto mr-auto bg-white  subpixel-antialiased shadow-[10px_10px_0px_black]">
+        <div key={post._id} className="w-11/12 md:w-[56rem] max-w-11/12 border-blue-900 mt-5 mb-5 border-3 rounded-xl  ml-auto mr-auto bg-white  subpixel-antialiased shadow-[10px_10px_0px_black]">
           {/* tile */}
           <div className="p-2 font-bold text-xl">{post.title}</div>
           <hr className="w-[98%] m-auto opacity-40 " />
@@ -57,7 +57,7 @@ export default function Home() {
           </div>
       )}
       <NavLink to="/addpost">
-        <button className="flex flex-col-reverse items-center w-15 h-20 fixed bottom-0 right-96 border-1 rounded-t-xl p-2 bg-blue-900 text-white shadow-[5px_5px_0px_black] hover:shadow-[8px_8px_4px_black] hover:-translate-0.5 duration-300 ease-in-out cursor-pointer active:bg-white active:text-black">
+        <button className="flex flex-col-reverse items-center w-15 h-20 fixed bottom-0 right-1/12 border-1 rounded-t-xl p-2 bg-blue-900 text-white shadow-[5px_5px_0px_black] hover:shadow-[8px_8px_4px_black] hover:-translate-0.5 duration-300 ease-in-out cursor-pointer active:bg-white active:text-black">
           Post 
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />

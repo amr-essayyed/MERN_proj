@@ -1,4 +1,4 @@
-import background from '../../public/assets/images/pattern.jpg';
+import background from '../public/pattern.jpg';
 import './App.css';
 import NavBar from './components/NavBar';
 import { Routes, Route } from 'react-router';
@@ -11,10 +11,9 @@ import EditPost from './pages/EditPost';
 
 function App() {
   // const [isLoggedin, setIsLoggedin] = useState(false);
-
+//   
   return (
-    // <div className="background-img" style={{ backgroundImage: `url(${background})` }} >
-      // <div className="absolute inset-0 bg-black bg-opacity-5">
+    <div className={` bg-fixed overflow-y-scroll h-dvh w-dvw`} style={{ backgroundImage: `url(${background})` }} >
         <AuthProvider>
           <NavBar></NavBar>
           <Routes>
@@ -25,8 +24,7 @@ function App() {
             <Route path="/editpost/:id" element={<EditPost />} />
           </Routes>
         </AuthProvider>
-      // </div>
-    // </div>
+    </div>
   )
 }
 

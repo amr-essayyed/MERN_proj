@@ -56,6 +56,7 @@ export const AuthProvider =({ children })=>{
 
         try{
             await axios.post('/auth/login', formValues);
+            setErrors({});
             setIsLoggedin(true);
             localStorage.setItem("isLoggedin","true");
             localStorage.user = formValues.name;

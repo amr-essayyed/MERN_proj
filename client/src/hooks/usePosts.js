@@ -4,6 +4,9 @@ import { useNavigate, useParams } from 'react-router';
 
 export default function usePosts() {
     const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [uploading, setUploading] = useState(false);
+
     let navigate = useNavigate();
     let params= useParams();
 
@@ -11,12 +14,15 @@ export default function usePosts() {
         // fetch all posts
         async function getPosts() {
             try {
+                setLoading(true);
                 const { data: tempposts } = await axios.get('/posts/');
                 // console.log(tempposts);
                 setPosts(tempposts)
 
             } catch (e) {
                 console.error("🔴", e);
+            } finally {
+                setLoading(false);
             }
         }
         getPosts();
@@ -29,16 +35,22 @@ export default function usePosts() {
         const formData = new FormData(e.target);        
                 
         try{
-            // const { data:resMsg } = await axios.post('/posts', { title:title, postBody:body, image:imageURL})
+            setUploading(true);
             const { data: resMsg } = await axios.post('/posts', formData)
             console.log(resMsg);
-            navigate("/")
+            navigate("/");
+            setUploading(false);
 
+            setLoading(true);
             const { data: tempposts } = await axios.get('/posts/');
             console.log(tempposts);
             setPosts(tempposts)
         } catch (e) {
             console.error("🔴", e);
+            
+        } finally {
+            setUploading(false);
+            setLoading(false)
         }
     }
 
@@ -66,7 +78,7 @@ export default function usePosts() {
         const formData = new FormData(e.target); 
 
         try {
-            // const { data: resMsg } = await axios.put('/posts/'+post.id, { title, postBody: body, image:imageURL })
+            setUploading(true);
             const { data: resMsg } = await axios.put('/posts/' + id, formData);
             console.log(resMsg);
             navigate("/");
@@ -77,10 +89,12 @@ export default function usePosts() {
 
         } catch (e) {
             console.error("🔴", e);
+        } finally {
+            setUploading(false)
         }
 
     }
 
 
-    return {posts, hndlDeletePost, hndlEditPost, hndlAddPost};
+    return {posts, hndlDeletePost, hndlEditPost, hndlAddPost, loading, uploading};
 }
