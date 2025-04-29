@@ -2,9 +2,6 @@ import React, { useRef } from 'react'
 
 export default function PostForm({_title="", _body="", _iamgeURL="", hndlSubmit, id, user}) {
   const formRef = useRef();  
-  // const title = useRef(_title);
-    // const body = useRef(_body);
-    // const imageURL = useRef(_iamgeURL);
 
   return (
     <form onSubmit={hndlSubmit} ref={formRef} className="flex flex-col card border-neutral-content border-1 w-80 p-5 gap-5 m-auto mt-5 shadow-[10px_10px_0px_black]">
