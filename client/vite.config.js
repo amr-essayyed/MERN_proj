@@ -21,8 +21,8 @@ export default defineConfig({
         secure: false
       },
       '/users': {
-        target: 'http://mernproj-production.up.railway.app',
-        // target: 'http://localhost',
+        // target: 'http://mernproj-production.up.railway.app',
+        target: 'http://localhost',
         changeOrigin: true,
         secure: false
       },

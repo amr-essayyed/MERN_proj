@@ -42,7 +42,7 @@ export default function Register() {
 
                 <input type="submit" value="Register" className="btn bg-blue-950 text-white" />
             </form>
-            
+            {errors.valid && <p className="text-error">{errors.valid}</p>}
         </div>
     )
 }
