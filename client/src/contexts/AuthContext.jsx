@@ -29,7 +29,9 @@ export const AuthProvider =({ children })=>{
             } else {
                 setErrors({});
                 try{
-                    await axios.post('/users', formData);
+                    console.log("✅form Data:", formValues);
+                    
+                    await axios.post('/users', formValues);
                     console.log("🟢 success");
                     navigate("/login");
                     return true;

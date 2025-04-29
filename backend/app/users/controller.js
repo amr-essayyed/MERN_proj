@@ -13,7 +13,7 @@ export async function addUser (req, res) {
         return res.status(201).json({msg: "user Added Successfully"})
         // res.status(201).redirect('/login/')
     }else{
-        res.status(400).send({msg: "error adding user"})
+        res.status(400).json({msg: "error adding user"})
     }
 }
 export async function getUsers (req, res) {

@@ -1,10 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { Navigate  } from 'react-router';
 import { useAuth } from '../hooks/useAuth';
-import { useForm } from 'react-hook-form';
 
 export default function Register() {
-    const { register, handleSubmit } = useForm();
     const {isLoggedin, register:hndlRegister, errors } = useAuth();
 
     console.log("🟡auth: ", isLoggedin);
