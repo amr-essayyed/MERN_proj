@@ -16,7 +16,10 @@ export default function NavBar() {
         <div className="flex-none">
           {
             (authenticate())?
-              <a className="btn text-blue-950" onClick={logout}>Logout</a>
+              <div>               
+                <span className="p-2 ">Howdy, {localStorage.user}</span>
+                <a className="btn text-blue-950" onClick={logout}>Logout</a>
+              </div>
             :
               <ul className="menu menu-horizontal">
                   <li><NavLink to="/login" className="btn">Login</NavLink></li>
