@@ -17,48 +17,55 @@ export const AuthProvider =({ children })=>{
     const [isLoggedin, setIsLoggedin] = useState(false);
     const [errors, setErrors] = useState({});
   
-    async function register(formData) {
-            const formValues = Object.fromEntries(formData);
-            console.log("🟢 register: ", formValues);
-            console.log(userSchema.safeParse(formValues));
-            const result = userSchema.safeParse(formValues)
-            
-            if (!result.success) {
-                const fieldErrors = extractZodErrors(result);
-                setErrors(fieldErrors);
-            } else {
-                setErrors({});
-                try{
-                    console.log("✅form Data:", formValues);
-                    
-                    await axios.post('/users', formValues);
-                    console.log("🟢 success");
-                    navigate("/login");
-                    return true;
-                }
-                catch (e){
-                    setErrors({valid:"this username is taken"});
-                    console.error("🔴: ", e);
-                    return false;
-                }
+    async function register(e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const formValues = Object.fromEntries(formData);
+        console.log("🟢 register: ", formValues);
+        console.log(userSchema.safeParse(formValues));
+        const result = userSchema.safeParse(formValues)
+        
+        if (!result.success) {
+            const fieldErrors = extractZodErrors(result);
+            setErrors(fieldErrors);
+        } else {
+            setErrors({});
+            try{
+                console.log("✅form Data:", formValues);
+                
+                await axios.post('/users', formValues);
+                console.log("🟢 success");
+                navigate("/login");
+                return true;
             }
+            catch (e){
+                setErrors({valid:"this username is taken"});
+                console.error("🔴: ", e);
+                return false;
+            }
+        }
 
 
     }
 
-    async function login(reqBody){        
+    async function login(e){    
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const formValues = Object.fromEntries(formData);
+        console.log("🟢 register: ", formValues);
+
         try{
-            await axios.post('/auth/login', reqBody);
+            await axios.post('/auth/login', formValues);
             setIsLoggedin(true);
             localStorage.setItem("isLoggedin","true");
-            localStorage.user = reqBody.name;
+            localStorage.user = formValues.name;
             console.log("🟢 success");
             navigate("/");
             //! fetch user data
             return true;
         }
         catch (e){
-            // setIsLoggedin(false);
+            setErrors({valid:"Cannot Login. Try Again"});
             console.error("🔴", e);
             return false;
         }

@@ -1,4 +1,5 @@
-import './App.css'
+import background from '../../public/assets/images/pattern.jpg';
+import './App.css';
 import NavBar from './components/NavBar';
 import { Routes, Route } from 'react-router';
 import Login from './pages/Login';
@@ -12,16 +13,20 @@ function App() {
   // const [isLoggedin, setIsLoggedin] = useState(false);
 
   return (
-    <AuthProvider>
-      <NavBar></NavBar>
-      <Routes>
-        <Route index path="/" element={<Home/>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/addpost" element={<AddPost />} />
-        <Route path="/editpost/:id" element={<EditPost />} />
-      </Routes>
-    </AuthProvider>
+    // <div className="background-img" style={{ backgroundImage: `url(${background})` }} >
+      // <div className="absolute inset-0 bg-black bg-opacity-5">
+        <AuthProvider>
+          <NavBar></NavBar>
+          <Routes>
+            <Route index path="/" element={<Home/>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/addpost" element={<AddPost />} />
+            <Route path="/editpost/:id" element={<EditPost />} />
+          </Routes>
+        </AuthProvider>
+      // </div>
+    // </div>
   )
 }
 
