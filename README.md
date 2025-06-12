@@ -1,5 +1,5 @@
 # Demo
-[Demo Video](https://www.awesomescreenshot.com/video/40895862?key=438fcbe5c92b8cb1e1a93e1d06303c8a)
+[🎥 Demo Video](https://www.awesomescreenshot.com/video/40895862?key=438fcbe5c92b8cb1e1a93e1d06303c8a)
 
 # Screenshots
 ![image](https://github.com/user-attachments/assets/cb48d19a-0ab7-46c3-9af2-5e35a41d854a)
